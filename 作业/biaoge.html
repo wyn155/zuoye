@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>学院</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>男</td>
+            <td>18</td>
+            <td>清华大学</td>
+             <td class="del">
+                <input type="button" value="删除" onclick="delecttr(this)">
+            </td>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>男</td>
+            <td>18</td>
+            <td>北京大学</td>
+             <td class="del">
+                <input type="button" value="删除" onclick="delecttr(this)">
+            </td>
+        </tr>
+    </table>
+    <input type="button" value="添加"  onclick="create() " class="btn btn-primary" style="width:60%;display: block;margin: 0 auto">
+</body>
+<script>
+    let arr=[]
+// 事件委派 可以解决动态插入节点的问题
+    let table = document.querySelector(".table")
+    let btn = document.querySelector(".btn")
+    table.ondblclick= function(event){
+        let target = event.target
+        if(target.nodeName == "TD" && target.className!="del"){
+            changeValue(target)
+        }
+    }
+    // 实现修改内容
+    function changeValue(item){
+        let oldtext = item.innerText
+        let input = document.createElement("input")
+        item.innerText = ""
+        input.value = oldtext
+        input.onchange = function(){ // 当失去焦点并且内容发生改变时触发
+            item.innerText = this.value
+        }
+        item.appendChild(input)
+        input.focus()
+
+    }
+    //添加
+    function create(){
+        console.log(123)
+        table.innerHTML+='<tr><td>张三</td><td>男</td><td>18</td><td>北京大学</td><td class="del">\n' +
+        '                <input type="button" value="删除" onclick="delecttr(this)">\n' +
+        '            </td></tr>'
+        arr.push=[table]
+    }
+    function delecttr(obj){
+        let tr = obj.parentNode.parentNode;
+        tr.parentNode.removeChild(tr);
+        }
+
+//     let tr = document.querySelectorAll("tr")
+//
+//     let btn1 = document.querySelector(".btn btn-danger")
+//     console.log(123)
+//         function del() {
+// console.log(123)
+//  // btn1=document.getElementById();
+//
+//  tr=btn1.parentNode.parentNode;
+//
+//  table.removeChild(tr);
+//
+// }
+    // btn1.onclick=function () {
+    //     document.parentNode.parentNode.remove(arr.pop())
+    // }
+    // function del(){
+    // btn1.onclick=function() {
+        // document.body.appendChild()
+        // this.parentNode.parentNode.remove(tr)
+        // btn1.deleteRow(this.parentNode.parentNode.rowIndex)
+
+    // }
+
+
+</script>
+</html>

@@ -128,7 +128,6 @@ function moveTop(topSite){
         animate(ele2,{scrollTop1:0},1000)
     }
 }
-
 function searchTop(searchSite){
     let topEle2 = document.querySelector(searchSite)
     window.onscroll = function(){

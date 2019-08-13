@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
             <td>18</td>
             <td>清华大学</td>
              <td class="del">
-                <input type="button" value="删除" onclick="delecttr(this)">
+                <input type="button" value="删除" onclick="del(this)" class="delete">
             </td>
         </tr>
         <tr>
@@ -32,7 +32,7 @@
             <td>18</td>
             <td>北京大学</td>
              <td class="del">
-                <input type="button" value="删除" onclick="delecttr(this)">
+                <input type="button" value="删除" onclick="del(this)" class="delete">
             </td>
         </tr>
     </table>
@@ -60,45 +60,30 @@
         }
         item.appendChild(input)
         input.focus()
-
     }
     //添加
     function create(){
-        console.log(123)
+        // console.log(123)
         table.innerHTML+='<tr><td>张三</td><td>男</td><td>18</td><td>北京大学</td><td class="del">\n' +
-        '                <input type="button" value="删除" onclick="delecttr(this)">\n' +
+        '                <input type="button" value="删除" onclick="del(this)" class="delete">\n' +
         '            </td></tr>'
         arr.push=[table]
     }
-    function delecttr(obj){
-        let tr = obj.parentNode.parentNode;
-        tr.parentNode.removeChild(tr);
-        }
+    //删除
+    function del(obj) {
+        let tr = obj.parentNode.parentNode
+        table.firstChild.remove(tr)
+    }
 
-//     let tr = document.querySelectorAll("tr")
-//
-//     let btn1 = document.querySelector(".btn btn-danger")
-//     console.log(123)
-//         function del() {
-// console.log(123)
-//  // btn1=document.getElementById();
-//
-//  tr=btn1.parentNode.parentNode;
-//
-//  table.removeChild(tr);
-//
-// }
-    // btn1.onclick=function () {
-    //     document.parentNode.parentNode.remove(arr.pop())
+    // function del(obj){
+    //     let tr = obj.parentNode.parentNode;
+    //     tr.parentNode.removeChild(tr);
+    //     }
+    // function fijaif(a,b,c){
+    //     console.log(this,a,b,c)
     // }
-    // function del(){
-    // btn1.onclick=function() {
-        // document.body.appendChild()
-        // this.parentNode.parentNode.remove(tr)
-        // btn1.deleteRow(this.parentNode.parentNode.rowIndex)
-
-    // }
-
+    // let obj ={"name":"小白"}
+    // fijaif.call(obj,"a")
 
 </script>
 </html>

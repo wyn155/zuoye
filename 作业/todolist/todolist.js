@@ -109,6 +109,8 @@ window.onload = function(){
         localStorage.todolist = JSON.stringify(data)
         console.log(num1)
         console.log(num2)
+        num1Node.innerHTML = `${num1}`
+        num2Node.innerHTML = `${num2}`
         
     }
 

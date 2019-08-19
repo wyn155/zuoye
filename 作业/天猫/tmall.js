@@ -68,75 +68,106 @@ function transParent(lunbotuClassName,lunbokClassName,tiaoClassName){
 
 
 
-function louCeng(navClassName,storeyClassName,navNumClassName){
-    let btns = document.querySelector(navClassName)
-    let boxs = document.querySelectorAll(storeyClassName)
-    let btn = document.querySelectorAll(navNumClassName)
+function zhiding  (topClassName){
+    let topEle = document.querySelector(topClassName)
+    // window.onscroll = function(){
+    //     let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+    //     if(scrollTop>=1000){
+    //         topEle.style.display = "block"
+    //     }else{
+    //         topEle.style.display = "none"
+    //     }
+    // }
+    topEle.onclick=function(){
+        let ele = document.documentElement || document.body
+        animate(ele,{scrollTop:0},1000)
+    }
+}
+
+
+function loucengtiaozhuan(btnsEleClassName,boxClassName,btnsClassName,searchSite){
+    let btnsEle = document.querySelector(".cedaohanglan")
+    let topEle = document.querySelector(searchSite)
+    let boxs = document.querySelectorAll(".tmall-market")
+    // console.log(boxClassName)
+    let btns = document.querySelectorAll(".cecon")
 
     // arr 保存 楼层举例页面的高度
-    let arr = [ ]
+    let arr = []
     boxs.forEach(function(item){
         arr.push(item.offsetTop)
+        console.log(arr)
     })
-    console.log(arr)
-    // 实现侧导航的显示隐藏
-    window.onscroll = function(){
+    window.onscroll = function() {
+        // 实现侧导航的显示隐藏
         let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-        let value = boxs[0].offsetTop - 200
-        if(scrollTop>value){
-            btns.style.transform = "scale(1,1)"
-        }else{
-            btns.style.transform = "scale(0,0)"
+        console.log(123)
+        let value = boxs[0].offsetTop - 300
+        console.log(value)
+        if (scrollTop > value) {
+            btnsEle.style.transform = "scale(1,1)"
+        } else {
+            btnsEle.style.transform = "scale(0,0)"
         }
-
-        let index = arr.findIndex((item)=>{
-            if(scrollTop - 190 < item ){
+        if(scrollTop>=1000){
+            console.log("abc")
+            topEle.style.transform = "scale(1,1)"
+        }else{
+            topEle.style.transform = "scale(1,0)"
+        }
+        // 实现楼层显示
+        // 目的：滚动到一定程度显示楼层下标。
+        // findIndex :返回第一个满足条件的下标
+        // [522, 1014, 1506, 1998, 2490, 2982, 3474, 3966, 4458, 4950]
+        // 已知 ：scrollTop   距离头部200显示下标
+        let index = arr.findIndex((item) => {
+            // 当scrollTop >322
+            if (scrollTop - 190 < item) {
                 return item
             }
-        })   //返回满足条件的下标
-
-        btn.forEach(function(item,i){
+        }) // 返回满足条件的下标
+        btns.forEach(function(item,i){
             if(i==index){
                 item.style.backgroundColor = "red"
-            }
-            else{
+            }else{
                 item.style.backgroundColor = ""
             }
         })
-    }
-    btn.forEach(function(item,index){
+        btns.forEach(function(item,index){
         item.onclick = function(){
-            let ele1 = document.documentElement.scrollTop || document.body.scrollTop
-            animate(ele1,{scrollTop:arr[index]-150},500)
+            let ele = document.documentElement || document.body
+            // ele.scrollTop = arr[index]-300
+            animate(ele,{scrollTop:arr[index]-100},500)
         }
-
     })
+    }
 }
 
-function moveTop(topSite){
-    let topEle1 = document.querySelector(topSite)
-    window.onscroll = function(){
-        let scrollTop1 = document.documentElement.scrollTop || document.body.scrollTop
-        if(scrollTop1>=1000){
-            topEle1.style.display = "block"
-        }else{
-            topEle1.style.display = "none"
-        }
-    }
-    topEle1.onclick = function(){
-        let ele2 = document.documentElement.scrollTop || document.body.scrollTop
-        animate(ele2,{scrollTop1:0},1000)
-    }
+function SelectCard(btnsClassName,consClassName){
+    let btns = document.querySelectorAll(btnsClassName);
+    let cons = document.querySelectorAll(consClassName);
+    // console.log(btns);
+    // console.log("123");
+    // console.log(cons);
+    btns.forEach(function (item,index) {
+        cons[0].style.zIndex = 10
+        btns[0].style.backgroundColor = "green"
+        item.onmouseenter = function () {
+            //清除
+            btns.forEach(function (it, i) {
+                it.classList.remove("name")
+                it.style.backgroundColor=""
+            });
+            this.classList.add("name");
+            item.style.backgroundColor = "green"
+            //清除
+             cons.forEach(function(item,index){
+                 item.style.zIndex = 0
+           })
+             cons[index].style.zIndex = 10
+            }
+    })
+    
 }
-function searchTop(searchSite){
-    let topEle2 = document.querySelector(searchSite)
-    window.onscroll = function(){
-        let scrollTop2 = document.documentElement.scrollTop || document.body.scrollTop
-        if(scrollTop2>=1000){
-            topEle2.style.transform = "scale(1,1)"
-        }else{
-            topEle2.style.transform = "scale(1,0)"
-        }
-    }
-}
+
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <!-- let date = new Date("2019/7/15 8:30:00")
+        console.log(date) -->
+    <input type="datetime-local" class="datetime">
+    <input type="button" value="倒计时" class="btn">
+    <div>
+        <span class="day">365</span>天
+        <span class="hour">24</span>小时
+        <span class="minutes">60</span>分钟
+        <span class="section">60</span>秒
+    </div>
+</body>
+<script>
+    let dateEle = document.querySelector(".datetime")
+    let btn = document.querySelector(".btn")
+    let future = ""
+    let flag = true
+    let day = document.querySelector(".day")
+    let hour = document.querySelector(".hour")
+    let minutes = document.querySelector(".minutes")
+    let section = document.querySelector(".section")
+
+    
+    btn.onclick = function(){
+        future = new Date(dateEle.value)
+        if(future && flag){
+            flag = false
+            dateEle.setAttribute("readonly","readonly")
+            setInterval(update,1000)
+        } 
+    }
+    function update(){
+        let now = new Date()
+        let offset = Math.floor((future.getTime()-now.getTime())/1000)
+        //天数
+        let daynum = Math.floor(offset/(60*60*24))
+        console.log(daynum)
+        day.innerText = daynum
+        // 小时
+        let hournum = Math.floor(offset%(60*60*24)/(60*60))
+        hour.innerText = hournum
+        // 分钟
+        let minnum = Math.floor((offset%(60*60*24))%(60*60)/60)
+        minutes.innerText = minnum
+        // 秒
+        let secnum = Math.floor(offset%(60*60*24)%(60*60)%60)
+        section.innerText = secnum
+
+    }
+</script>
+</html>

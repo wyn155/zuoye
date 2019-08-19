@@ -1,88 +1,83 @@
 window.onload = function(){
-    let jiadian = document.querySelectorAll(".jiadian li ")
-    let jiadian1 = document.querySelectorAll(".jiadian li .jiaju")
-    let cons = document.querySelectorAll(".cons .list1")
-    cons[0].style.zIndex=1
-    jiadian.forEach((item,index)=>{
-        item.style.color="#000"
-        item.onmouseenter =function(){
-            jiadian1.forEach(function (item,index) {
-               item.style.color="#000"
-                item.style.borderBottom="0"
-            });
-            cons.forEach(function(item,index){
-                item.style.zIndex=0
+    let jiadianDaohangRight = document.querySelectorAll(".jiadian-daohang-right div p")
+    let jiadianDakuang = document.querySelectorAll(".cons .jiadian-list-right")
 
-            });
-            cons[index].style.zIndex=1
-            jiadian1[index].style.color="#ff6700"
-            jiadian1[index].style.borderBottom="2px solid #ff6700"
+    jiadianDaohangRight.forEach((item,index)=>{
+        item.onmouseenter = function(){
+            jiadianDaohangRight.forEach(function(item,index){
+                item.style.color = "#000"
+                item.style.borderBottom = "0"
+            })
+            jiadianDakuang.forEach(function(item,index){
+                item.style.zIndex = 0
+            })
+            jiadianDakuang[index].style.zIndex = 10
+            item.style.color = "#ff6700"
+            item.style.borderBottom = "2px solid #ff6700"
         }
     })
 
-    let banner = document.querySelectorAll(".bannerimg a")
-    let ceils = document.querySelector(".lbt")
-    let prev = document.querySelector(".prev")
-    let next = document.querySelector(".next")
-    let dians = document.querySelectorAll(".dian div")
+    let ceils = document.querySelectorAll(".lunbotu-dak .lunbotu")
+    let box = document.querySelector(".lunbotu-dak")
+    let prev = document.querySelector(".left-arrow")
+    let next = document.querySelector(".right-arrow")
+    let dian = document.querySelectorAll(".four-dot .dot")
     let now = 0
     let flag = true
-    function run(type = 0) {
-         flag = false
-        if (type == 0) {//正向
+    function run(type=0){
+
+        if(type == 0){
+            //正向
             now += 1
-            if (now > banner.length - 1) {
+            if(now>ceils.length-1){
                 now = 0
             }
-        } else {//逆向
+        }
+        if(type == 1){
+            //逆向
             now -= 1
-            if (now < 0) {
-                now = banner.length - 1
+            if(now<0){
+                now = ceils.length-1
             }
         }
-        dians.forEach(function (item,index) {
-            item.classList.remove("act")
-        });
-        dians[now].classList.add("act")
-
-        banner.forEach(function (item, index) {
-            item.classList.remove("action")
-        });
-        banner[now].classList.add("action")
+        ceils.forEach(function(item,index){
+            item.classList.remove("first")
+        })
+        ceils[now].classList.add("first")
+        dian.forEach(function(item,index){
+            if(index==now){
+                item.style.background = "none"
+            }else{
+                item.style.background = "#8D8D8D"
+            }
+        })
     }
+    let t = setInterval(run,3000)
 
-    let t = setInterval(run, 1000)
-
-    ceils.onmouseenter = function () {
+    box.onmouseenter = function(){
         clearInterval(t)
     }
-    ceils.onmouseleave = function () {
-        t = setInterval(run, 1000)
+    box.onmouseleave = function(){
+        t = setInterval(run,3000)
+
     }
-    //左右
-    prev.onclick = function () {
+
+    next.onclick = function(){
+             run()
+    }
+    prev.onclick = function(){
             run(1)
-
     }
-    next.onclick = function () {
-            run(0)
-        }
 
-
-    //下边的点
-    dians.forEach(function (item, index) {
-        item.onclick = function () {
-            dians.forEach(function (item,i) {
-                item.classList.remove("act")
+    dian.forEach(function(item,index){
+        item.onclick = function(){
+            ceils.forEach(function(item,i){
+                item.classList.remove("first")
             })
-            // dians[index].classList.add("act")
-            banner.forEach(function (item, i) {
-                item.classList.remove("action")
-            })
-            banner[index].classList.add("action")
+            ceils[index].classList.add ("first")
             now = index
         }
-
     })
+
 
 }

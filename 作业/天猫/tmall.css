@@ -912,11 +912,15 @@ header{
     background-color:white;
     border:1px solid #fff;
 }
-.floor-tabs{
+.cons{
     width:462px;
-    height:282px;
+    height:57px;
     margin:10px;
     box-shadow:0 2px 8px 0 rgba(0,0,0,.09);
+}
+.name{
+    color:white;
+    background-color:#00B262"!important;
 }
 .grid{
     width:191px;
@@ -928,21 +932,34 @@ header{
     padding:0 20px;
     background-color:#F1F1F1;
 }
-.cons{
+
+.neirong{
+    width:462px;
     position:relative;
+    left: 0;
+    height:225px;
 }
 .grid-xia{
     width:462px;
     height:225px;
-    position:relative;
-    top:57px;
+    position: absolute;
+    /* top:57px; */
     left:0;
+    top:0;
+}
+.grid-xia{
+    width:462px;
+    height:225px;
+    position: absolute;
+    /* top:57px; */
+    left:0;
+    top:0;
 }
 .right-detail{
     width:291px;
     height:87px;
     position:absolute;
-    top:100px;
+    top:50px;
     left:0;
     background:url("./img/sanjiao-kuang.png") no-repeat;
     background-color:rgba(0,0,0,0);
@@ -1207,45 +1224,83 @@ header{
 }
 footer{
     width:100%;
-    height:228px;
-    background-color:#000;
+    height:220px;
+    background-color: black;
 }
-.foot{
+.footer-tmallinfo{
+    width: 1190px;
+    height: 25px;
+    margin: 5px auto;
+    color: #fff;
+    line-height: 25px;
+    padding:5px 0;
+}
+.blank{
+    float: left;
+    display: block;
+    font-size: 12px;
+    margin-right: 5px;
+    color: #fff;
+    text-decoration: none;
+}
+.otherlink{
     width:1190px;
-    height:28px;
-    line-height:28px;
+    height: 24.8px;
+    margin:0 auto;
+    padding:5px 0px;
+}
+.jituan{
+    float: left;
+    display: block;
+    font-size: 12px;
+    margin-right: 5px;
+    color: #fff;
+    text-decoration: none;
+    line-height: 24.8px;
+}
+.duansuxian{
+    display: block;
+    float: left;
+    width:1px;
+    height:12px;
+    margin: 6px 5px 0px;
+    background-color: white;
+}
+.copyright{
+    width:1190px;
+    height:150.6px;
+    margin: 0 auto;
+    color: #a4a4a4;
+    font-size: 12px;
+}
+.xinxi{
+    margin-right: 65px;
+    text-decoration: none;
+    color: #a4a4a4;
+    font-size: 12px;
+}
+.dengjizheng{
+    display: block;
+    float: left;
+    color: #a4a4a4;
+    font-size: 12px;
+    margin-right: 65px;
+}
+b{
+    height:20px;
+    display: block;
+    color: #686868;
+    font-weight: 400;
+    font-size: 12px;
+}
+.fp{
+    width:1190px;
+    height: 45px;
+    display: block;
+    display: block!important;
+    padding-top: 10px;
+    float: left;
 
-    padding:5px 0;
-}
-.foot a{
-    font-size:12px;
-    color:white;
-    margin:0 3px 0 0;
-}
-.foot2{
-    width:1190px;
-    height:35px;
-    line-height:35px;
-    margin:auto;
-    color:white;
-    padding:5px 0;
-}
-.foot2 a{
-    font-size:12px;
-    color:white;
-}
-.foot3{
-    width:1190px;
-    height:151px;
-    color:#a4a4a4;
-    font-size:12px;
-    margin:auto;
-}
-.foot3 span{
-    margin:0 65px 0 0;
-}
-.ff img{
-    margin-right:3px;
 }
 
 .cebian-right{
@@ -1261,7 +1316,7 @@ footer{
 .tmall-cebian-logo{
     width:35px;
     height:35px;
-    margin-top:100px;
+    margin-top:1px;
 }
 .tmall-cebian-logo:hover{
     background:#ff0036;
@@ -1347,6 +1402,7 @@ footer{
     transform:scale(1,0);
     transform-origin:top;
     transition:all .3s;
+    z-index: 20;
 }
 
 .topJuzhong{
@@ -1383,6 +1439,51 @@ footer{
     margin-right:19px;
 }
 
+.cedaohanglan{
+    width:35px;
+    height:360px;
+    position: fixed;
+    bottom:50px;
+    left: 100px;
+    cursor: pointer;
+    transition:all .5s;
+    transform: scale(0,0);
+    transform-origin: bottom left;
+}
+.cecon{
+    display: block;
+    width:35px;
+    height:35px;
+    margin:1px 0px 0px;
+    font-size: 12px;
+    text-align: center;
+    background-color: #666666;
+    color: white;
+}
+.cecon1{
+    display: block;
+    width:35px;
+    height:35px;
+    margin:1px 0px 0px;
+    font-size: 12px;
+    text-align: center;
+    background-color: #ff0036;
+    color: white;
+}
+.cecon:hover{
+    background-color: #00b262;
+}
+.top{
+    margin:1px 0px 0px;
+    display: block;
+    width:35px;
+    height:35px;
+    font-size: 12px;
+    text-align: center;
+    background-color: #666666;
+    line-height: 35px;
+    color: white;
+}
 
 
 

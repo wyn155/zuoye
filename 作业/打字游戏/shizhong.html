@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .yuanquan{
+        width:400px;
+        height:400px;
+        border-radius: 50%;
+        /* border:1px solid red; */
+        margin:0 auto;
+        box-shadow: 0px 4px 11px 2px rgba(0,0,0,0.5);
+        position: relative;
+        background-image: url("./img1/wuyubo.jpg");
+        background-size:400px 400px;
+    }
+    .kd{
+        width: 2px;
+        height:16px;
+        background: #333;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left:0;
+        right:0;
+        margin:0 auto;
+        transform-origin: center 200px;
+        background-size:cover;
+        
+    }
+    .sk{
+        width:1.5px;
+        height:10px;
+        background-color: aqua;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left:0;
+        right:0;
+        margin:0 auto;
+        transform-origin: center 200px;
+    }
+    .hour{
+        width:5px;
+        height:90px;
+        background-color: #666;
+        position: absolute;
+        top:50%;
+        right:0;
+        left:0;
+        margin:0 auto;
+        margin-top:-80px;
+        transform-origin: center 80px;
+    }
+    .minutes{
+        width:4px;
+        height:120px;
+        background-color: #666;
+        position: absolute;
+        top:50%;
+        right:0;
+        left:0;
+        margin:0 auto;
+        margin-top:-110px;
+        transform-origin: center 110px;
+    }
+    .section{
+        width:2px;
+        height:150px;
+        background-color: #ff0036;
+        position: absolute;
+        top:50%;
+        right:0;
+        left:0;
+        margin:0 auto;
+        margin-top:-140px;
+        transform-origin: center 140px;
+    }
+</style>
+<body>
+    <div class="yuanquan">
+        <div class="hour"></div>
+        <div class="minutes"></div>
+        <div class="section"></div>
+    </div>
+</body>
+<script>
+    let yuanquan  = document.querySelector(".yuanquan")
+    
+    for(let a=1;a<=12;a++){
+        let div = document.createElement("div")
+        div.className = "sk"
+        div.style.transform = `rotate(${30*a}deg)`
+        yuanquan.appendChild(div)
+    }
+    for(let i=0;i<4;i++){
+        let div = document.createElement("div")
+        div.className = "kd"
+        div.style.transform = `rotate(${90*i}deg)`
+        yuanquan.appendChild(div)
+    }
+    let hour =document.querySelector(".hour")
+    let minutes =document.querySelector(".minutes")
+    let section =document.querySelector(".section")
+    function run(){
+        let date = new Date()
+        let h = date.getHours()
+        let m = date.getMinutes()
+        let s = date.getSeconds()
+        hour.style.transform = `rotate(${h*(360/12)}deg)`
+        minutes.style.transform = `rotate(${m*(360/60)}deg)`
+        section.style.transform = `rotate(${s*(360/60)}deg)`
+    }
+    run()
+    setInterval(run,1000)
+</script>
+</html>
